@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="fibonacci">
+      <h1>Fibonacci Sequence Generator🤖</h1>
+      <form
+        onsubmit="handleFormSubmit(event)"
+        onload="handleFormSubmit(event)"
+        on
+      >
+        <input
+          type="number"
+          name="firstnumber"
+          id="firstnumber"
+          placeholder="First Number"
+        />
+        <input
+          type="number"
+          name="secondnumber"
+          id="secondnumber"
+          placeholder="Second Number"
+        />
+        <input
+          type="number"
+          name="lenght"
+          id="lenght"
+          placeholder="Length"
+        />
+        <input
+          type="number"
+          name="index"
+          id="index"
+          placeholder="Index"
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <div id="answer">
+        <p id="numbersArray">Fill in the inputs 👆🏽 to generate a sequence </p>
+        <p id="indexValue">Choose the nth number you want to find it value</p>
+        <p id="lengthInfo"></p>
+      </div>
+    </div>
+  </body>
+</html>

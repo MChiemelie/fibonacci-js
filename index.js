@@ -1,27 +1,29 @@
-// fibonacci function takes three parameters. These three parameters represent the first number, second number, lenght - thenumber of numbers to be on the list and the index of the number to be oughted for respectively.
-function fibonacci(firstNumber, secondNumber, lenght, index) {
-   // intialize a variable called numbers and set it to an array. This array holds the value of the numbers in the Fibonacci
-   let numbers = [firstNumber, secondNumber];
+function handleFormSubmit(event) {
+   // Prevent the default form submission behavior
+   event.preventDefault();
 
-   // a for loop to to add up the last two numbers in the array if the sum of the numbers is less than 10
-   for (let i = 0; i < lenght; i++) {
+   // Get the values of the input elements when the form is submitted
+   const firstNumber = parseFloat(document.getElementById("firstnumber").value);
+   const secondNumber = parseFloat(document.getElementById("secondnumber").value);
+   const length = parseInt(document.getElementById("lenght").value);
+   const index = parseInt(document.getElementById("index").value);
 
-      // initailize a variable to that would hold the last numbers in the array ** This variable is actually an array as the slice method actually stores the last set of values, depending on the argument passed, in an array
-      let lastTwoNumbers = numbers.slice(-2);
+   // Call the fibonacci function with the input values
+   const numbers = fibonacci(firstNumber, secondNumber, length);
 
-      // initailze a function that would calculate the sum of the last two numbers
-      function sumOfLastNumbers() {
-         let sum = 0; // intailizes a variable that would hold the sum of the last two number and set it orginally to zero
-         let summingArray = lastTwoNumbers.map(eachNumber => sum += eachNumber); // gets the last two numbers from the lastTwoNumbers, loops through them and add each one to the sum variable, create an new array of these last two numbers plus the sum
-         return summingArray[summingArray.length - 1]; // makes this function to return the value of the last number
-      }
-
-      numbers.push(sumOfLastNumbers()); // adds the last number to the end of the array
-   }
-
-   console.log(numbers[index]);
-   console.log(numbers);
+   // Set the value of the "numbersArray" element to the array of Fibonacci numbers
+   document.getElementById("numbersArray").innerText = isNaN(firstNumber && secondNumber) ? `You have to provide the first and second number of the sequence to generate the rest of the sequence` : `The Fibonacci sequence generated is ${numbers.join(', ')}`
+   document.getElementById("indexValue").innerText = index > length ? `The nth number cannot be greater than the number of numbers in the sequence` : index < 1 ? `Hey 😏😒, you can't find the nth when it less than one` : `${length ? `The ${ index }th number in the sequence is ${ numbers[index - 1] }` : `The lenght of the sequence is not enough to provide the index` }`;
+   // documnet.getElementById("lengthInfo").innerText =  `True` : "As you didn't provide the lenght, the sequence would have just the first and second number you provided."
 }
 
-// calling the fibonacci function with the required arguments
-fibonacci(1, 4, 12, 2);
+function fibonacci(firstNumber, secondNumber, length) {
+   let numbers = [firstNumber, secondNumber];
+
+   for (let i = 2; i < length; i++) {
+      let sum = numbers[i - 1] + numbers[i - 2];
+      numbers.push(sum);
+   }
+
+   return numbers;
+}
