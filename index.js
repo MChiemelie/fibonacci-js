@@ -14,7 +14,6 @@ function handleFormSubmit(event) {
    // Set the value of the "numbersArray" element to the array of Fibonacci numbers
    document.getElementById("numbersArray").innerText = isNaN(firstNumber && secondNumber) ? `You have to provide the first and second number of the sequence to generate the rest of the sequence` : `The Fibonacci sequence generated is ${numbers.join(', ')}`
    document.getElementById("indexValue").innerText = index > length ? `The nth number cannot be greater than the number of numbers in the sequence` : index < 1 ? `Hey 😏😒, you can't find the nth when it less than one` : `${length ? `The ${ index }th number in the sequence is ${ numbers[index - 1] }` : `The lenght of the sequence is not enough to provide the index` }`;
-   // documnet.getElementById("lengthInfo").innerText =  `True` : "As you didn't provide the lenght, the sequence would have just the first and second number you provided."
 }
 
 function fibonacci(firstNumber, secondNumber, length) {
